@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> The Psychic Game </title>
+</head>
+<body>
+
+<strong><h1> The Psychic Game </h1></strong>
+
+<div id="game"> 
+	<p> Guess what letter I'm thinking of </p>
+</div>
+
+<script type="text/javascript">
+	
+	var options = ["a", "b", "c", "d", "e", "f", "g", "h", 
+					"i", "j", "k", "l", "m", "n", "o", "p",
+					"q", "r", "s", "t", "u", "v", "w", "x",
+					"y", "z"]
+
+	var wins = 0;
+	var losses = 0;
+	var guessesLeft = 9;
+	var guessesSoFar = []
+
+	document.onkeyup = function() {
+		var userguess = String.fromCharCode(event.keyCode).toLowerCase;
+
+		console.log(userguess);
+
+		var computerGuess = options[Math.floor(Math.random()*options.length)];
+
+		console.log(computerGuess);
+
+		if (userguess == computerGuess) {
+			wins++;
+			//How do i make guessesLeft go back to 9?
+			alert()
+			//How to clear array guessesSoFar?
+			guessesSoFar = [];
+		}
+		if (userguess != computerGuess) {
+			guessesLeft--;
+			//How do I push letter into guessesSoFar?
+			guessesSoFar.push(userguess);
+		}
+
+		if (guessesLeft = 0) {
+			losses++;
+			//How do I make guessesLeft go back to 9?
+		}
+	}
+
+	var html = "<p> Guess what letter I'm thinking of </p>" + "<p>Wins: " + wins + "</p>" 
+		 + "<p>Losses: " + losses + "</p>"
+		 + "<p>Guesses Left: " + guessesLeft 
+		 + "<p>Your Guesses so far: " + guessesSoFar + "</p>";
+
+		 document.querySelector('#game').innerHTML = html;
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

@@ -23,32 +23,54 @@
 	var guessesLeft = 9;
 	var guessesSoFar = []
 
+	//When user releases a key button, that button will be assigned to the variable userguess as a lowercase letter
 	document.onkeyup = function() {
 		var userguess = String.fromCharCode(event.keyCode).toLowerCase;
 
 		console.log(userguess);
 
+		// This is where the app will pick a random letter from the options array and assign it to the variable computerGuess
 		var computerGuess = options[Math.floor(Math.random()*options.length)];
 
 		console.log(computerGuess);
 
+		//When the user wins and selects the same letter as computerGuess
+		//If userguess is the same as computerGuess
 		if (userguess == computerGuess) {
+			//User will win and the wins counter will increase
 			wins++;
+			
+			//How to make game start over without refreshing?
+
 			//How do i make guessesLeft go back to 9?
-			alert()
-			//How to clear array guessesSoFar?
+			var guessesLeft = 9;
+			//How to clear letters from array guessesSoFar?
 			guessesSoFar = [];
 		}
+
+		//If the userguess letter is not the same as computerGuess
 		if (userguess != computerGuess) {
 			guessesLeft--;
 			//How do I push letter into guessesSoFar?
 			guessesSoFar.push(userguess);
+
+
 		}
 
-		if (guessesLeft = 0) {
+		// This is for when user losses
+		// starting from 1, when length of array guessesSoFar becomes 9
+		for (i = 1; i < guessesSoFar.length(9); i++) { 
+			
+			//Losses counter will increase by 1
 			losses++;
-			//How do I make guessesLeft go back to 9?
+
+			// Reset guesses Left back to 9
+			guessesLeft= 9;
+			// Clear array guessesSoFar
+			guessesSoFar = [];
+
 		}
+		
 	}
 
 	var html = "<p> Guess what letter I'm thinking of </p>" + "<p>Wins: " + wins + "</p>" 
